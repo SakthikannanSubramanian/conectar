@@ -14,11 +14,11 @@ import {
 //get users profiles
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const response = await axios.get("api/profile/me");
+    const responseData = await axios.get("api/profile/me");
 
     dispatch({
       type: GET_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
   } catch (err) {
     dispatch({
@@ -33,11 +33,11 @@ export const getAllProfiles = () => async (dispatch) => {
   try {
     dispatch({ type: CLEAR_PROFILE });
 
-    const response = await axios.get("api/profile");
+    const responseData = await axios.get("api/profile");
 
     dispatch({
       type: GET_ALL_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
   } catch (err) {
     dispatch({
@@ -54,11 +54,11 @@ export const getProfileById = (userId) => async (dispatch) => {
 
     const getProfileByIdURL = `/api/profile/user/${userId}`;
 
-    const response = await axios.get(getProfileByIdURL);
+    const responseData = await axios.get(getProfileByIdURL);
 
     dispatch({
       type: GET_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
   } catch (err) {
     dispatch({
@@ -71,11 +71,11 @@ export const getProfileById = (userId) => async (dispatch) => {
 //Get Git hub repos
 export const getGitHubRepos = (userName) => async (dispatch) => {
   try {
-    const response = await axios.get(`/api/profile/github/${userName}`);
+    const responseData = await axios.get(`/api/profile/github/${userName}`);
 
     dispatch({
       type: GET_REPOS,
-      payload: response.data,
+      payload: responseData.data,
     });
   } catch (err) {
     dispatch({
@@ -96,11 +96,11 @@ export const createProfile = (formData, history, edit = false) => async (
       },
     };
 
-    const response = await axios.post("api/profile", formData, config);
+    const responseData = await axios.post("api/profile", formData, config);
 
     dispatch({
       type: GET_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
 
     dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
@@ -131,7 +131,7 @@ export const addExperience = (formData, history) => async (dispatch) => {
       },
     };
 
-    const response = await axios.put(
+    const responseData = await axios.put(
       "api/profile/experience",
       formData,
       config
@@ -139,7 +139,7 @@ export const addExperience = (formData, history) => async (dispatch) => {
 
     dispatch({
       type: UPDATE_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
 
     dispatch(setAlert("Experience Added", "success"));
@@ -168,11 +168,15 @@ export const addEducation = (formData, history) => async (dispatch) => {
       },
     };
 
-    const response = await axios.put("api/profile/education", formData, config);
+    const responseData = await axios.put(
+      "api/profile/education",
+      formData,
+      config
+    );
 
     dispatch({
       type: UPDATE_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
 
     dispatch(setAlert("Education Added", "success"));
@@ -195,11 +199,11 @@ export const addEducation = (formData, history) => async (dispatch) => {
 //Delete an experience
 export const deleteExperience = (id) => async (dispatch) => {
   try {
-    const response = await axios.delete(`/api/profile/experience/${id}`);
+    const responseData = await axios.delete(`/api/profile/experience/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
 
     dispatch(setAlert("Experience Removed", "success"));
@@ -220,11 +224,11 @@ export const deleteExperience = (id) => async (dispatch) => {
 //Delete an education
 export const deleteEducation = (id) => async (dispatch) => {
   try {
-    const response = await axios.delete(`/api/profile/education/${id}`);
+    const responseData = await axios.delete(`/api/profile/education/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
-      payload: response.data,
+      payload: responseData.data,
     });
 
     dispatch(setAlert("Education Removed", "success"));
