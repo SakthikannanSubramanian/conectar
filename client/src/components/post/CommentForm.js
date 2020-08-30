@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addComment, removeComment } from "../../redux/actions/post";
+import { addComment } from "../../redux/actions/post";
 
 const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState("");
