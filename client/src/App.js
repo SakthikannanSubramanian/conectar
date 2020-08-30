@@ -23,6 +23,7 @@ import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import setAuthToken from "./utils/setAuthToken";
 import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -45,6 +46,7 @@ const App = () => {
               <Route exact path="/profile/:id" component={Profile} />
               <PrivateRoute exact path="/posts" component={Posts} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/post/:id" component={Post} />
               <PrivateRoute
                 exact
                 path="/create-profile"
