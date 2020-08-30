@@ -6,6 +6,7 @@ const config = require("config");
 
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
+const Post = require("../../models/Posts");
 const { check, validationResult } = require("express-validator");
 
 //@route    GET api/profile/me
@@ -138,7 +139,7 @@ router.get("/user/:user_id", async (req, res) => {
     if (Object.entries(profile).length === 0) {
       res.status(404).json({ msg: "Profile not found" });
     }
-    res.json(profile);
+    res.json(profile[0]);
   } catch (err) {
     console.error(err.message);
     if (err.kind == "ObjectId") {
@@ -155,8 +156,10 @@ router.get("/user/:user_id", async (req, res) => {
 router.delete("/", auth, async (req, res) => {
   try {
     //Remove profile
+    await Post.deleteMany({ user: req.user.id });
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
+
     res.json({ msg: "User deleted" });
   } catch (err) {
     console.error(err.message);

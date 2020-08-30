@@ -72,7 +72,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ jwToken: token });
+          res.json({ jwtToken: token });
         }
       );
     } catch (err) {
