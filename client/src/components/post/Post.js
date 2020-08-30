@@ -5,6 +5,7 @@ import Loading from "../layout/Loading";
 import { getPost } from "../../redux/actions/post";
 import PostItem from "../posts/PostItem";
 import { Link } from "react-router-dom";
+import CommentForm from "./CommentForm";
 
 const Post = ({ post: { post, loading }, getPost, match }) => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const Post = ({ post: { post, loading }, getPost, match }) => {
         Back To Posts
       </Link>
       <PostItem post={post} showActions={false} />
+      <CommentForm postId={post._id} />
     </Fragment>
   );
 };
