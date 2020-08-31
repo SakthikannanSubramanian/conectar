@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://sakthikannan:sakthikannansubramanian@conectar.ayzsw.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "fd3bc3f70fe481446f33",
+    "githubSecret": "0c48cd1f190c555748a9f7ea41a82fb303f5a8d3"
+}
