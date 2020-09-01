@@ -141,7 +141,8 @@ const CreateProfile = ({ createProfile, history }) => {
           />
           <small className="form-text">
             If you want your latest repos and a Github link, include your
-            username
+            username (not your github registered mail id please use username i.e
+            sakthikannansubramanian)
           </small>
         </div>
         <div className="form-group">

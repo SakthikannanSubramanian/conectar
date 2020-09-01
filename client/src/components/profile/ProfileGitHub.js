@@ -2,7 +2,6 @@ import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getGitHubRepos } from "../../redux/actions/profile";
-import Loading from "../layout/Loading";
 
 const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
   useEffect(() => {
@@ -10,8 +9,8 @@ const ProfileGitHub = ({ username, getGitHubRepos, repos }) => {
   }, []);
   return (
     <Fragment>
-      {repos === null ? (
-        <Loading />
+      {repos.length <= 0 ? (
+        <div>No Repos on this account</div>
       ) : (
         repos.map((repo) => (
           <div key={repo._id} className="repo bg-white p-1 my-1">

@@ -9,6 +9,7 @@ import {
   DELETE_ACCOUNT,
   GET_ALL_PROFILE,
   GET_REPOS,
+  GET_REPOS_NOT_FOUND,
 } from "./types";
 
 //get users profiles
@@ -79,8 +80,7 @@ export const getGitHubRepos = (userName) => async (dispatch) => {
     });
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
+      type: GET_REPOS_NOT_FOUND,
     });
   }
 };

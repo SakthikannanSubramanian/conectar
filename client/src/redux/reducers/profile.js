@@ -5,6 +5,7 @@ import {
   UPDATE_PROFILE,
   GET_ALL_PROFILE,
   GET_REPOS,
+  GET_REPOS_NOT_FOUND,
 } from "../actions/types";
 
 const initialState = {
@@ -43,6 +44,8 @@ export default function (state = initialState, action) {
       };
     case GET_REPOS:
       return { ...state, repos: payload, loading: false };
+    case GET_REPOS_NOT_FOUND:
+      return { ...state, loading: false };
     default:
       return state;
   }
