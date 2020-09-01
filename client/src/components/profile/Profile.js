@@ -62,9 +62,9 @@ const Profile = ({
                 <h4>No education recorded</h4>
               )}
             </div>
-            <div class="profile-github">
-              <h2 class="text-primary my-1">
-                <i class="fab fa-github"></i> Github Repos
+            <div className="profile-github">
+              <h2 className="text-primary my-1">
+                <i className="fab fa-github"></i> Github Repos
               </h2>
               {profile.githubusername && (
                 <ProfileGitHub username={profile.githubusername} />
